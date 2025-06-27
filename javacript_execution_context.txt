@@ -1,0 +1,33 @@
+Via the Javascript Code, An execution context is formed which is called the Global Execution Context.
+Global execution context is referred as "this". GEC is different for different environments i.e Node/Browser environment.
+  
+Types of Execution Context:
+1. GEC
+2. Function Execution Context
+3. Eval Execution Context (Part of GEC)
+
+## Summary
+  
+The JavaScript execution context is a fundamental concept that describes the environment in which JavaScript code is parsed, compiled, and executed. It operates in two main phases: the **Memory Creation Phase** and the **Code Execution Phase**. When JavaScript code runs, it first enters the **Global Execution Context**, which is the default or base context where global code is executed. This context is created whenever the JavaScript engine starts processing code, whether in a browser or Node.js environment.
+
+### Memory Creation Phase
+During this phase, the JavaScript engine scans through the code and allocates memory for all variables, functions, and objects declared in the current context. Variables are initially assigned the value `undefined`, while functions are stored fully in memory as executable code. This phase is crucial because it sets up the environment for the code to run without errors related to undeclared variables or functions. For example, if you declare a function, the entire function definition is stored in memory at this phase, even before any code executes.
+
+### Code Execution Phase
+After memory allocation, the engine starts executing the code line by line, assigning actual values to variables, invoking functions, and performing operations. During this phase, the JavaScript engine uses the call stack to keep track of function invocations and their execution contexts. Whenever a function is called, a new **Function Execution Context** is created and pushed onto the call stack, and when the function finishes execution, its context is popped off the stack. This call stack mechanism ensures that JavaScript executes code in a single-threaded, synchronous manner, processing one function at a time in a last-in-first-out (LIFO) order.
+
+### Types of Execution Contexts
+1. **Global Execution Context**: Created by default, represents the global scope. The global object (such as `window` in browsers or `global` in Node.js) and the value of `this` in the global scope are part of it.
+2. **Function Execution Context**: Created whenever a function is invoked. Each function call has its own execution context with its own variable environment.
+3. **Eval Execution Context**: Created by code executed inside an `eval()` function, which is less commonly used.
+
+### Important Points
+- The **`this`** keyword refers to the current execution context.
+- JavaScript is **single-threaded**, meaning it executes one command at a time.
+- The execution context stack (call stack) manages the order of context creation and destruction.
+- Hoisting occurs during the memory creation phase, where variable and function declarations are moved to the top of their scope.
+- Modern JavaScript environments (browsers, Node.js) may differ slightly in their global objects but follow the same execution context principles.
+- Understanding execution context is essential for grasping advanced topics like closures, scope chains, and asynchronous programming.
+
+### Summary
+JavaScript’s execution context is the environment that manages the lifecycle of code execution, memory allocation, and function invocation. It consists of a global context and multiple function contexts created dynamically during runtime. The two-phase process of memory creation and code execution ensures variables and functions are properly managed, while the call stack maintains execution order. Mastery of execution context concepts leads to better understanding of JavaScript’s behavior, scoping, closures, and debugging, which is crucial for both beginner and advanced developers.
